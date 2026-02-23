@@ -1,0 +1,21 @@
+header = file.read1(8)
+    assert len(header) == 8, "ERROR: Failed to read header!"
+    assert header[:4] == b"cIMG", "ERROR: Invalid magic number!"
+    assert int.from_bytes(header[4:6], "little") == 1, "ERROR: Invalid version!"
+    width = int.from_bytes(header[6:7], "little")
+    height = int.from_bytes(header[7:8], "little")
+
+width * height = 275
+275 = 25 * 11
+
+#!/bin/python
+
+with open("example.cimg", "wb") as file:
+    file.write(b"cIMG")  
+    file.write((1).to_bytes(8, "little"))  
+    
+    width = 25
+    height = 11
+    file.write(width.to_bytes(2, "little"))  
+    file.write(height.to_bytes(2, "little"))  
+    file.write((width * height) * b"X")
